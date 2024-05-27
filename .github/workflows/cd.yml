@@ -24,7 +24,7 @@ jobs:
       - name: Get tag or version
         id: gitvars
         run: |
-          echo ::set-output name=version::${GITHUB_REF#refs/tags/}
+          echo "##[set-output name=version;]$(echo ${GITHUB_REF##*/})"
       - name: Install cosign
         uses: sigstore/cosign-installer@v3.1.1
         with:
